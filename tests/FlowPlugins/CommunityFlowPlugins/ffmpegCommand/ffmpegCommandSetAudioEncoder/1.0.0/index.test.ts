@@ -58,9 +58,9 @@ describe('ffmpegCommandSetAudioEncoder Plugin', () => {
 
       expect(result.outputNumber).toBe(1);
       expect(result.outputFileObj).toBe(baseArgs.inputFileObj);
-      expect(result.variables.ffmpegCommand.streams[1].outputArgs).toEqual(['-c:{outputIndex}', 'libfdk_aac', '-b:a', '128k']);
+      expect(result.variables.ffmpegCommand.streams[1].outputArgs).toEqual(['-c:{outputIndex}', 'libfdk_aac', '-b:a:{outputTypeIndex}', '128k']);
       expect(result.variables.ffmpegCommand.streams[2].outputArgs).toEqual([]);
-      expect(result.variables.ffmpegCommand.streams[3].outputArgs).toEqual(['-c:{outputIndex}', 'libfdk_aac', '-b:a', '320k']);
+      expect(result.variables.ffmpegCommand.streams[3].outputArgs).toEqual(['-c:{outputIndex}', 'libfdk_aac', '-b:a:{outputTypeIndex}', '320k']);
     });
 
     it('should not modify video stream', () => {

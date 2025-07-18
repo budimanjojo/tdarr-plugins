@@ -140,7 +140,7 @@ const plugin = (args: IpluginInputArgs): IpluginOutputArgs => {
       if (enableBitrate) {
         const totalBitrate = (stream.channels ?? 2) * parseInt(bitrate, 10);
         args.jobLog(`Total bitrate will be set to ${totalBitrate}k based on number of channel and per channel bitrate`);
-        stream.outputArgs.push('-b:a', String(`${totalBitrate}k`));
+        stream.outputArgs.push('-b:a:{outputTypeIndex}', String(`${totalBitrate}k`));
       }
     }
   });

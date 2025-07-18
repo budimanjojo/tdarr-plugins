@@ -131,7 +131,7 @@ var plugin = function (args) {
             if (enableBitrate) {
                 var totalBitrate = ((_a = stream.channels) !== null && _a !== void 0 ? _a : 2) * parseInt(bitrate, 10);
                 args.jobLog("Total bitrate will be set to ".concat(totalBitrate, "k based on number of channel and per channel bitrate"));
-                stream.outputArgs.push('-b:a', String("".concat(totalBitrate, "k")));
+                stream.outputArgs.push('-b:a:{outputTypeIndex}', String("".concat(totalBitrate, "k")));
             }
         }
     });
