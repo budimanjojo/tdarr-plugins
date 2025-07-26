@@ -1,4 +1,3 @@
-import { existsSync } from 'fs';
 import { plugin } from
   '../../../../../../FlowPluginsTs/CommunityFlowPlugins/tools/getSrtSubtitles/1.0.0/index';
 
@@ -134,8 +133,8 @@ describe('getSrtSubtitles Plugin', () => {
       { overwriteFile: true, outputNumber: 1, expectedLog: 'Will be overwritten because overwrite is set to true',},
       { overwriteFile: false, outputNumber: 2, expectedLog: 'Skipping because overwrite is set to false'},
     ])('should handle existing file according to overwriteFile inputs', async ({ overwriteFile, outputNumber, expectedLog }) => {
-      const FS = require('fs');
-      jest.spyOn(FS, 'existsSync').mockReturnValue(true);
+      let existsSyncSpy: jest.SpyInstance;
+      existsSyncSpy = jest.spyOn(require('fs'), 'existsSync').mockReturnValue(true);
 
       baseArgs.inputs.overwriteFile = overwriteFile;
 
@@ -147,6 +146,9 @@ describe('getSrtSubtitles Plugin', () => {
       expect(baseArgs.jobLog).toHaveBeenCalledWith(
         expect.stringContaining(expectedLog)
       );
+
+      // restore mock after test
+      existsSyncSpy.mockRestore();
     });
   });
 
