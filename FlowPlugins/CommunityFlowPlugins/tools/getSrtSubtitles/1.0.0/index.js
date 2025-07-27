@@ -37,7 +37,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.plugin = exports.details = void 0;
-var iso_639_2_1 = require("iso-639-2");
+var iso6392BTo1_1 = require("./iso6392BTo1");
+var iso6392TTo1_1 = require("./iso6392TTo1");
 var fs_1 = require("fs");
 var cliUtils_1 = require("../../../../FlowHelpers/1.0.0/cliUtils");
 var details = function () { return ({
@@ -153,7 +154,7 @@ var plugin = function (args) { return __awaiter(void 0, void 0, void 0, function
                         args.jobLog("Subtitle stream with index s:".concat(index, " matches language and input codec, processing..."));
                         if (useISO6391) {
                             // try to get the 639-1 language code and fallback to the language from ffprobeData
-                            lang = (_b = (_a = iso_639_2_1.iso6392BTo1[lang]) !== null && _a !== void 0 ? _a : iso_639_2_1.iso6392TTo1[lang]) !== null && _b !== void 0 ? _b : lang;
+                            lang = (_b = (_a = iso6392BTo1_1.iso6392BTo1[lang]) !== null && _a !== void 0 ? _a : iso6392TTo1_1.iso6392TTo1[lang]) !== null && _b !== void 0 ? _b : lang;
                         }
                         var out = inputFileName.split('.');
                         out[out.length - 2] += ".".concat(lang);

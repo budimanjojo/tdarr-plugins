@@ -1,4 +1,5 @@
-import { iso6392BTo1, iso6392TTo1 } from 'iso-639-2';
+import { iso6392BTo1 } from './iso6392BTo1';
+import { iso6392TTo1 } from './iso6392TTo1';
 import { existsSync } from 'fs';
 import {
   IpluginDetails,
